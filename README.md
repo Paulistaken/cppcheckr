@@ -1,5 +1,5 @@
 # cppcheckr
-A smol cpp file tester for competitive programing, running tests from a directory in .in and .out format :)
+A small cpp file tester for competitive programing, running tests from a directory in .in and .out format :)
 ## usage
 
 cppcheckr 
