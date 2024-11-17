@@ -1,0 +1,11 @@
+/home/nwsprt/Documents/myapps/rustapps/cppcheckr/target/package/cppcheckr-1.1.1/target/debug/deps/libsyn_mid-057798c8fcb032cd.rmeta: /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/lib.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/macros.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/func.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/pat.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/path.rs
+
+/home/nwsprt/Documents/myapps/rustapps/cppcheckr/target/package/cppcheckr-1.1.1/target/debug/deps/libsyn_mid-057798c8fcb032cd.rlib: /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/lib.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/macros.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/func.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/pat.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/path.rs
+
+/home/nwsprt/Documents/myapps/rustapps/cppcheckr/target/package/cppcheckr-1.1.1/target/debug/deps/syn_mid-057798c8fcb032cd.d: /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/lib.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/macros.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/func.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/pat.rs /home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/path.rs
+
+/home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/lib.rs:
+/home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/macros.rs:
+/home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/func.rs:
+/home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/pat.rs:
+/home/nwsprt/.cargo/registry/src/index.crates.io-6f17d22bba15001f/syn-mid-0.5.4/src/path.rs:

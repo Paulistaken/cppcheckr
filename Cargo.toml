@@ -1,8 +1,9 @@
 [package]
 edition = "2021"
 name = "cppcheckr"
-version = "1.1.1"
+version = "1.1.2"
 authors = ["nwsprt"]
+repository="https://github.com/Paulistaken/cppcheckr.git"
 build = false
 autobins = false
 autoexamples = false
