@@ -3,7 +3,7 @@ A small cpp file tester for competitive programing, running tests from a directo
 ## usage
 
 cppcheckr 
-  -a *(path to algorithm)* without the .cpp
+  -a *(path to algorithm)*
   -i testy/input_folder/test_prefix 
   -o /testy/output_folder/test_prefix 
   -b *(number of first test)* 
