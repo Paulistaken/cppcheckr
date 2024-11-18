@@ -1,38 +1,46 @@
-use clap_v3::{App, Arg, Error, Result};
+use clap_v3::{App, Arg};
 use colored::Colorize;
-use core::{alloc, panic, time};
-use std::fmt::UpperExp;
+use core::panic;
 use std::fs;
 use std::path::Path;
 use std::process::Command;
-use std::time::{Instant, SystemTime, UNIX_EPOCH};
+use std::time::Instant;
 
 fn compile_the_program(algo_file: &str) {
     let pth = format!("{}.cpp", algo_file);
-    let ex = Path::new(&pth).try_exists();
-    if ex.is_err() {
+    if Path::new(&pth).try_exists().is_ok_and(|x| x == false) {
         panic!("No file at {}", pth);
     }
-    if ex.is_ok_and(|x| x == false) {
-        panic!("No file at {}", pth);
-    }
+    fs::create_dir("cppchetmp").unwrap_or_default();
+    Command::new("sh").arg("-c").arg("rm cppchetmp/program");
     Command::new("sh")
         .arg("-c")
-        .arg(format!("g++ {}.cpp", algo_file))
+        .arg(format!("g++ {}.cpp -o cppchetmp/program", algo_file))
         .output()
         .expect("failed to execute process");
+    Command::new("-c").arg("mv program cppchetmp/program");
+    if Path::new("cppchetmp/program")
+        .try_exists()
+        .is_ok_and(|x| x == false)
+    {
+        panic!("could not compile");
+    }
 }
-fn check_if_program_output_if_fine(amt: i32, input_file: &str, output_file: &str) -> Option<f32> {
+fn check_if_program_output_if_fine(amt: u32, input_file: &str, output_file: &str) -> Option<f32> {
     let tm = Instant::now();
-    if fs::read_to_string(format!("{}{}.in", input_file, amt)).is_err() {
-        let txt = format!("Could not find {}{}.in", input_file, amt);
-        println!("{}", txt.red().bold());
-        return None;
+    if Path::new(&format!("{}{}.in", input_file, amt))
+        .try_exists()
+        .is_ok_and(|x| x == false)
+    {
+        panic!("Could not find; {}{}.in", input_file, amt);
     }
 
     Command::new("sh")
         .arg("-c")
-        .arg(format!("./a.out < {}{}.in > tmp.out", input_file, amt))
+        .arg(format!(
+            "cppchetmp/program < {}{}.in > cppchetmp/tmp{}.out",
+            input_file, amt, amt
+        ))
         .output()
         .expect("failed to execute process");
 
@@ -41,29 +49,32 @@ fn check_if_program_output_if_fine(amt: i32, input_file: &str, output_file: &str
     if outfile.is_err() {
         panic!("Could not find; {}{}.out", output_file, amt);
     }
-
-    let tmpfile = fs::read_to_string("tmp.out");
-
-    if tmpfile.is_err() {
-        let txt = format!("The program didn't execute properly. (test no: {})", amt);
+    if Path::new(&format!("cppchetmp/tmp{}.out", amt))
+        .try_exists()
+        .is_ok_and(|x| x == false)
+    {
+        let txt = format!("Test wrong (hasn't returned an output). (test no: {})", amt);
         println!("{}", txt.red());
         return None;
     }
+    let tmpfile = fs::read_to_string(format!("cppchetmp/tmp{}.out", amt));
 
-    let out = outfile
-        .unwrap()
+    let oout = outfile.unwrap();
+    let otmp = tmpfile.unwrap();
+    let out = oout
+        .clone()
         .split_whitespace()
         .fold("".to_owned(), |a, b| format!("{}{}", a, b));
 
-    let tmp = tmpfile
-        .unwrap()
+    let tmp = otmp
+        .clone()
         .split_whitespace()
         .fold("".to_owned(), |a, b| format!("{}{}", a, b));
 
     if !(out == tmp) {
         println!("{} at test n: {}", "Wrong Anwser".red(), amt);
-        println!("{}: {}", "Expected".blue(), out);
-        println!("{}: {}", "Got".blue(), tmp);
+        println!("{}: {}", "Expected".blue(), oout);
+        println!("{}: {}", "Got".blue(), otmp);
         return None;
     }
 
@@ -153,7 +164,7 @@ fn main() {
 
     (begin..end + 1).for_each(|i| {
         println!("Testing {i}");
-        let out = check_if_program_output_if_fine(i as i32, input, output);
+        let out = check_if_program_output_if_fine(i as u32, input, output);
         if out.is_none() && all_pas == 0 {
             inc += 1;
             if halt == 1 {
@@ -176,7 +187,7 @@ fn main() {
     println!("{} {}", crt, "Correct".green());
     println!("{} {} out of {}", inc, "Incorect".red(), end - begin + 1);
     println!(
-        "That is {}%",
+        "That is {:.1}%",
         (inc as f32) / (end - begin + 1) as f32 * 100.
     );
 }

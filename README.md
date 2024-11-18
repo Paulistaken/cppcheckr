@@ -13,8 +13,8 @@ will:
 - compile file *(path to algorithm)*.cpp
 - run the program with input from folder *testy/input_folder* and compare it to outputs from folder *testy/output_folder*
   - Where the name of the tests look like: 
-    - testy/input_folder/test{i}.in
-    - testy/outpu_folder/test{i}.out 
+    - *testy/input_folder/test{i}.in*
+    - *testy/outpu_folder/test{i}.out* 
   - i being a number between *(number of first test)* and *(number of last test)*
 - test the speed of those programs *( so you can see how well your optimizations work :) )*
 - You can pass the argument -p 1 to make sure all tests pass :) **(but quality will not be guarantied)**
